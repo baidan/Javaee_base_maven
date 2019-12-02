@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baidan.dao.IEmployee">
+    <!--resultMap 数据库字段和实体类字段映射-->
+    <resultMap id="employeeRM" type="com.baidan.domain.Employee">
+
+    </resultMap>
+
+    <select id="findAll" resultType="com.baidan.domain.Employee">
+        select * from employee
+    </select>
+
+    <select id="getEmployee" parameterType="int" resultType="com.baidan.domain.Employee">
+        select * from employee
+        where id = #{ id }
+    </select>
+
+    <insert id="addEmployee" parameterType="com.baidan.domain.Employee">
+        insert into employee
+        (username,birthday,entry_date,job,salary,resume,imgs,gender)
+        values
+        (#{username},#{birthday},#{entry_date},#{job},#{salary},#{resume},#{imgs},#{gender})
+    </insert>
+</mapper>

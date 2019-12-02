@@ -1,4 +1,4 @@
-package com.baidan.controller.servlet;
+package com.baidan.controller;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
