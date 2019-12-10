@@ -18,16 +18,16 @@ import java.util.List;
 import java.util.Random;
 
 public class test {
-    private SqlSessionFactory factory;
-    private InputStream in;
+    private  static  SqlSessionFactory factory;
+    private  static InputStream in;
 
     @Before
     public void init() throws IOException {
-        //1.读取配置文件
+        //1.读    factory = builder.build(in);取配置文件
         in = Resources.getResourceAsStream("SqlMapConfig.xml");
         //2.创建SqlSessionFactory工厂
         SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
-        factory = builder.build(in);
+
     }
 
     @Test
@@ -58,7 +58,7 @@ public class test {
     }
 
     @Test
-    public void TestAddEmployee() throws Exception {
+    public void testAddEmployee() throws Exception {
         //3.使用工厂生产SqlSession对象
         SqlSession session = factory.openSession();
         //4.使用SqlSession创建Dao接口的代理对象
@@ -88,6 +88,37 @@ public class test {
     }
 
     @Test
-    public void TestMath() throws Exception {
+    public void testAddEmployee2() throws Exception {
+        //3.使用工厂生产SqlSession对象
+        SqlSession session = factory.openSession();
+        //4.使用SqlSession创建Dao接口的代理对象
+        IEmployee employee = session.getMapper(IEmployee.class);
+        Employee emp = new Employee();
+
+        // String string_date = new SimpleDateFormat("yyyy-MM-dd").format(new Date()).toString();
+
+        String v = String.valueOf(Math.random());
+        v = v.substring(v.length()-2);
+        emp.setGender("男");
+        emp.setJob("工程师");
+        emp.setResume("ddd");
+        emp.setBirthday(new Date());
+        emp.setEntry_date(new Date());
+        emp.setUsername("李四"+ v);
+        emp.setSalary("2000");
+        emp.setImgs("/adf/sdf/j.jpg");
+
+        //employee.addEmployee(emp);
+
+        session.insert("addEmployee", emp);
+
+        session.commit();
+        session.close();
+        in.close();
+    }
+
+    @Test
+    public void testMath() throws Exception {
+        testAddEmployee2();
     }
 }
