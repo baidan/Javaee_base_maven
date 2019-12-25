@@ -17,7 +17,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
-public class test {
+public class MyBatisTest {
     private  static  SqlSessionFactory factory;
     private  static InputStream in;
 

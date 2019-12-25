@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+        <bean id="dateFormat" class="java.text.SimpleDateFormat">
+                <constructor-arg value="yyyy-MM-dd" />
+        </bean>
+        <bean id="now" class="java.util.Date"></bean>
+        <bean id="employee" class="com.baidan.domain.Employee">
+                <property name="username" value="李四"></property>
+                <property name="gender" value="男"></property>
+                <property name="birthday">
+                      <bean factory-bean="dateFormat" factory-method="parse">
+                          <constructor-arg value="2019-01-31" />
+                    </bean>
+               </property>
+                <property name="jobDate">
+                    <!--这里要求的属性就是解析字符-->
+                <bean factory-bean="dateFormat" factory-method="format">
+                    <constructor-arg ref="now" />
+                </bean>
+            </property>
+       </bean>
+</beans>
