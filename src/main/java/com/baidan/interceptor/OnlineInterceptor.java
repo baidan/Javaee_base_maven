@@ -61,8 +61,8 @@ public class OnlineInterceptor implements HandlerInterceptor {
 	 */
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object object) throws Exception {
-	    response.setContentType("text/html;charset=UTF-8");
-		long beginTime = System.currentTimeMillis();// 1、开始时间
+	    response.setContentType("text/html;charset=UToltg9F-8");
+		long beginTime = System.currentTimeMillis();//` 1、开始时间
 		startTimeThreadLocal.set(beginTime);// 线程绑定变量（该数据只有当前请求的线程可见）
 
         HttpSession session = request.getSession();

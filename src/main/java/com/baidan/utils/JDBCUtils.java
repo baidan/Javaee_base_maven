@@ -29,14 +29,30 @@ public class JDBCUtils {
         return dataSource;
     }
 
-    public static Connection getConnection() throws SQLException {
+    /**
+     * 通过阿里巴巴的连接池技术获取连接
+     * @return Connection
+     * @throws SQLException
+     */
+    public static Connection getConnectionByDruid() throws SQLException {
         return dataSource.getConnection();
     }
 
+    /**
+     * 关闭资源
+     * @param statement
+     * @param connection
+     */
     public static void close(Statement statement, Connection connection) {
         close(null, statement, connection);
     }
 
+    /**
+     * 关闭资源
+     * @param resultSet
+     * @param statement
+     * @param connection
+     */
     public static void close(ResultSet resultSet, Statement statement, Connection connection) {
         if (resultSet != null) {
             try {
@@ -64,10 +80,10 @@ public class JDBCUtils {
 
 
     /**
-     * 获取mysql基础连接对象
-     * @return
+     * 通过最基础的mysql驱动 获取mysql基础连接对象
+     * @return Connection
      */
-    public static Connection getConnectionJDBC() {
+    public static Connection getConnectionByJDBC() {
         Connection connection = null;
         try {
             //mysql 5.0之前需要手动加载，之后不用写。

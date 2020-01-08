@@ -26,7 +26,7 @@ public class BaseServlet extends HttpServlet {
         System.out.println("请求uri:"+uri);//  /travel/user/add
         //2.获取方法名称
         String methodName = uri.substring(uri.lastIndexOf('/') + 1);
-        System.out.println("方法名称："+methodName);
+        System.out.println("方法名 称："+methodName);
         //3.获取方法对象Method
         //谁调用我？我代表谁
         System.out.println(this);//UserServlet的对象cn.itcast.travel.web.servlet.UserServlet@4903d97e
